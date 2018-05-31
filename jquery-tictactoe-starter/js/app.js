@@ -32,8 +32,8 @@ $(document).ready(function(){
 
     // This creates an array containing what has been entered into the grid so far
     var checkWin = [];
-    for (var r = 0; r <= 2; r++) {
-      for (var c = 0; c <= 2; c++) {
+    for (var r = 0; r <= 2; r++) { //rows
+      for (var c = 0; c <= 2; c++) { //columns
         checkWin.push($tr[r].children[c].innerText);
       }
     }
@@ -62,7 +62,7 @@ $(document).ready(function(){
             break;
         } // end switch
       } // end if
-    }
+    } // end for
   }
 
 });
