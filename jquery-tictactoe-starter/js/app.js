@@ -1,15 +1,4 @@
 $(document).ready(function(){
-  // Code goes here
-
-  // console.log('working');
-
-  // squares go from 0-8 left to right top to bottom.
-  // there is no content in the element yet. Just padding.
-
-  // If ((turnCounter%2)=0) we want the class, playerTurn, to stay the same
-  // Else we want the class, playerTurn, to change to 'It is O's turn'
-
-  // var $table = $("table");
 
   var $td = $("td");
   var $h2 = $('h2');
@@ -22,13 +11,14 @@ $(document).ready(function(){
   $button.click(resetBoard);
   function resetBoard() {
     $td.text("");
-    $td.addClass('clear');
+    $td.removeClass('X');
+    $td.removeClass('O');
   }
 
 
   // TAKE TURN - If an even amount of turns have been played, pus an X where the user clicks. Otherwise, place a O where the user clicks.
-  $td.click(clickStyle);
-  function clickStyle(){
+  $td.click(takeTurn);
+  function takeTurn(){
     if ((turnCounter % 2) == 0) {
       $(this).addClass('X');
       $(this).append('X');
@@ -50,12 +40,12 @@ $(document).ready(function(){
 
     // WIN CONDITIONS
     // waysToWin contains an array for each row, each column and each diag
-    var waysToWin = [[0, 1, 2], [3,4,5], [6,7,8], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
+    var waysToWin = [[0, 1, 2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
 
-
+    // for each possible way to win...
     for (var i = 0; i < waysToWin.length; i++) {
 
-      // The following is a way to compare three elements (allbiet longhanded)
+      // ... check if The following is a way to compare if three elements are the same (allbiet longhanded)
       if (checkWin[waysToWin[i][0]] === checkWin[waysToWin[i][1]] &&
          checkWin[waysToWin[i][0]] === checkWin[waysToWin[i][2]] &&
          checkWin[waysToWin[i][0]] !== "") {
@@ -73,32 +63,6 @@ $(document).ready(function(){
         } // end switch
       } // end if
     }
-
-
-
-    console.log(checkWin);
   }
-
-
-
-
-  // WIN CONDITIONS
-  // if nth element in each row is the same.
-  // if all elements in a row are equal
-  // and diagonals
-
-  // for (var i = 0; i < 2; i++) {
-  //   $tr[i]
-  // }
-
-  // if ($tr.innertext = "X	X	X") {
-  //   console.log('working');
-  // }
-
-
-
-
-
-
 
 });
